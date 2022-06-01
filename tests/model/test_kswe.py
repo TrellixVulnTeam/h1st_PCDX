@@ -89,10 +89,10 @@ class TestKSWE:
         with tempfile.TemporaryDirectory() as path:
             os.environ['H1ST_MODEL_REPO_PATH'] = path
             r2_score1 = test_kswe(kswe, data)['r2_score']
-            kswe.persist('my_v1')
+            kswe.persist('my_v2')
             kswe = None
             kswe = KSWE()
-            kswe.load_params('my_v1')
+            kswe.load_params('my_v2')
             r2_score2 = test_kswe(kswe, data)['r2_score']
             assert r2_score1 == r2_score2
 

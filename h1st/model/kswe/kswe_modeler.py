@@ -74,6 +74,17 @@ class KSWEModeler(Modeler):
         segmentor = segmentor_modeler.build_model(input_data, segmentation_config)
         segmentor_output = segmentor.process({'X': input_data['X_train']})
 
+
+        # 1. save the segmented data or segmentor
+
+        # 2.a load segmentor in different node and run process
+
+        # 2.b load one piece of segmented data in different node
+
+        # 3. train sub_model and persist it
+
+        # 4. load submodels and we build Ensemble
+
         # Train sub_models
         sub_models = {}
         segmented_data = {}
