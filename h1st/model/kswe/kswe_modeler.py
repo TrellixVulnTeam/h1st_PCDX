@@ -71,7 +71,46 @@ class KSWEModeler(Modeler):
                 raise ValueError(f'The length of X_test {input_data["X_test"].shape[0]}'
                                 f'and y_test {input_data["y_test"].shape[0]} are different.')                    
 
+        def build_segmentor():
+            # load data
+
+            # build segmentor
+
+            # persist segmentor
+            pass
+
+        def run_segmetor():
+            pass
+
+        def build_submodel():
+            pass
+        
+        def build_workflow():
+            flow = Flow()
+            segmentor_step = SegmentorStep()
+            sub_modeler_1 = SubModeler(segmented_data_1)
+            sub_modeler_2 = SubModeler(segmented_data_2)
+
+
+            segmentation_output = [{
+                "name": "segA",
+                "output": "data_path_A",
+            }, {
+                "name": "segB",
+                "output": "data_path_B",
+            }]
+            
+            sub_modeler_step = SubModelerStep([sub_modeler_1, sub_modeler_2])
+            flow.add(segmentor_step)
+            flow.add(sub_modeler_step)
+
+            ensembler_step = EnsemblerStep()
+            flow.add(ensembler_step)
+
+
+
         segmentor = segmentor_modeler.build_model(input_data, segmentation_config)
+
         segmentor_output = segmentor.process({'X': input_data['X_train']})
 
 
